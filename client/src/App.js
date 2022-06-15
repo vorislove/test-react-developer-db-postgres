@@ -1,5 +1,5 @@
 import './App.css';
-import Tabel from './Blocks/Tabel/Tabel';
+import Table from './Blocks/Table/Table';
 import React, { useState, useEffect } from 'react';
 import Sort from './Blocks/Sort/Sort';
 import Http from './services/http';
@@ -135,7 +135,7 @@ function App() {
 		<div className="App">
 			<div className="wrapper">
 				<Sort onChangeSelect={sortParamSelect} onChangeInput={sortParamInput} />
-				<Tabel data={sorgtingData} loading={loading} />
+				<Table data={sorgtingData} loading={loading} />
 				<div className="d-flex flex-row justify-content-center">
 					<Button
 						visible={postsEnded}
