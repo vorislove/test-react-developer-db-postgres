@@ -19,7 +19,7 @@ function Tabel({ data, loading }) {
 
 	const content = loading ? (
 		<tr>
-			<th className="border-bottom-0" scope="row" colspan="4">
+			<th className="border-bottom-0" scope="row" colSpan="4">
 				<Spinner color={'primary'} />
 			</th>
 		</tr>
