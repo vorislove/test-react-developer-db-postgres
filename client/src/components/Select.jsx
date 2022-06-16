@@ -10,9 +10,7 @@ function Select({ options, defaultValue, classAdd, value, onChange }) {
 			onChange={(e) => onChange(e.target.value)}
 			aria-label=".form-select-sm example"
 		>
-			<option value="" selected>
-				{defaultValue}
-			</option>
+			<option defaultValue="">{defaultValue}</option>
 			{options.map((option) => (
 				<option key={option.value} value={option.value}>
 					{option.name}
