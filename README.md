@@ -2,7 +2,7 @@
 
 * Для начала создайте таблицу ***post*** в вашей базе данных. 
 `create TABLE post(id SERIAL PRIMARY KEY, date VARCHAR(255), name VARCHAR(255), quantity INT, distance INT)` 
-и импортируйте данные из фалйла ***post.csv*** командой 
+и импортируйте данные из файла ***post.csv*** командой 
 `\copy post(id,date,name,quantity,distance) FROM '/path/post.csv' CSV  DELIMITER ',' HEADER`
     где `/path` это путь до файла ***post.csv***
     
