@@ -1,4 +1,7 @@
 .sorting {
+    position: sticky;
+    top: 0;
+
     .selects {
         display: flex;
         flex-direction: row;

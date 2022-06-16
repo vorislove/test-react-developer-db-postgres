@@ -29,8 +29,8 @@ function Tabel({ data, loading }) {
 
 	return (
 		<div>
-			<table className="table mt-2">
-				<thead className="table-light">
+			<table className="table p-3">
+				<thead className="header table-light">
 					<tr className="border-bottom">
 						<th scope="col">Дата</th>
 						<th scope="col">Название</th>

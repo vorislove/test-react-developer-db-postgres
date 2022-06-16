@@ -1,5 +1,10 @@
 .table {
-    padding: 30px;
+    // padding: 30px;
     width: 100%;
     vertical-align: middle;
+
+    .header {
+        position: sticky;
+        top: 90px;
+    }
 }

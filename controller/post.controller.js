@@ -19,22 +19,18 @@ class PostController {
 		res.header('Access-Control-Allow-Origin', '*');
 		res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,PATCH,OPTIONS');
 		//
-		const posts = await db.query('SELECT * FROM post');
-		res.json(posts.rows);
-	}
-
-	async getPostsLimit(req, res) {
-		const offset = req.params.offset;
-		const limit = req.params.limit;
-		//пришлось добавить т.к. из-за политики конфиденциальности бразуера запросы не проходили
-		res.header('Access-Control-Allow-Origin', '*');
-		res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,PATCH,OPTIONS');
-		//
-		const posts = await db.query('SELECT * FROM post where id >= $1 and id < $1 + $2', [
-			offset,
-			limit
-		]);
-		res.json(posts.rows);
+		const offset = req.query.offset;
+		const limit = req.query.limit;
+		if (offset != null || limit != null) {
+			const posts = await db.query('SELECT * FROM post ORDER BY id LIMIT $1 OFFSET $2', [
+				limit,
+				offset
+			]);
+			res.json(posts.rows);
+		} else {
+			const posts = await db.query('SELECT * FROM post');
+			res.json(posts.rows);
+		}
 	}
 
 	async getOnePost(req, res) {

@@ -3,8 +3,8 @@ import axios from 'axios';
 axios.defaults.baseURL = 'http://localhost:5000/api/';
 
 export default class Http {
-	_baseLimit = 7;
-	_baseOffeset = 1;
+	_baseLimit = 10;
+	_baseOffeset = 0;
 
 	createPost = async (date, name, quantity, distance) => {
 		let res = await axios.post('/post/', {
@@ -22,7 +22,7 @@ export default class Http {
 	};
 
 	getPostsLimit = async (offset = this._baseOffeset) => {
-		let res = await axios.get(`post/${offset}/${this._baseLimit}`);
+		let res = await axios.get(`/post?limit=${this._baseLimit}&offset=${offset}`);
 		return await res.data;
 	};
 

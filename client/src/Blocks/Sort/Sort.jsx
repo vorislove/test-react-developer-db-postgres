@@ -16,7 +16,7 @@ function Sort({ onChangeSelect, onChangeInput }) {
 	];
 
 	return (
-		<div className="sorting pb-1 sticky-top bg-white">
+		<div className="sorting pb-3 bg-white">
 			<div className="fs-4 text mb-1">Соритровка</div>
 			<div className="selects">
 				<Select

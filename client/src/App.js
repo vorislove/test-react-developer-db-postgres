@@ -8,7 +8,7 @@ import Button from './components/Button';
 function App() {
 	const [post, setPost] = useState([]);
 	const [sortParams, setSortParams] = useState({ column: '', condition: '', inputValue: '' });
-	const [offset, setOffset] = useState(1);
+	const [offset, setOffset] = useState(0);
 	const [loading, setLoading] = useState(true);
 	const [postsEnded, setPostsEnded] = useState(false);
 	const [newPostLoading, setNewPostLoading] = useState(false);
@@ -32,14 +32,14 @@ function App() {
 
 	const onPostsLoaded = (newPost) => {
 		let ended = false;
-		if (newPost.length < 4) {
+		if (newPost.length < 10) {
 			ended = true;
 		}
 
 		setPost([...post, ...newPost]); //обновление стейта
 		setLoading(false); //спинер загурзки таблицы
 		setNewPostLoading(false); //индкиация загузки на кнопке
-		setOffset(offset + 7); //оффсет для дозагрузки остальных строк из таблицы
+		setOffset(offset + 10); //оффсет для дозагрузки остальных строк из таблицы
 		setPostsEnded(ended); //убираю кнопку если вся таблица загружена
 	};
 
@@ -131,14 +131,20 @@ function App() {
 			? sortPost(post)
 			: post;
 
+	const visibleBtn =
+		(sortParams.column !== '' && sortParams.condition !== '' && sortParams.inputValue !== '') ||
+		postsEnded
+			? true
+			: false;
+
 	return (
 		<div className="App">
 			<div className="wrapper">
 				<Sort onChangeSelect={sortParamSelect} onChangeInput={sortParamInput} />
 				<Table data={sorgtingData} loading={loading} />
-				<div className="d-flex flex-row justify-content-center">
+				<div className="d-flex flex-row justify-content-center mb-3">
 					<Button
-						visible={postsEnded}
+						visible={visibleBtn}
 						name={!newPostLoading ? 'Ещё' : 'Загрузка'}
 						color={'primary'}
 						onClick={() => onRequest(offset)}
